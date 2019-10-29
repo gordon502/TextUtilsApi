@@ -1,0 +1,1 @@
+![Build status](https://travis-ci.org/colorgreen/TextUtilsApi.svg?branch=master)
