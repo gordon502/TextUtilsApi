@@ -1,6 +1,9 @@
 package pl.io.texttransformer.logic;
 
-abstract public class Transformation {
+public class Transformation {
 
-    abstract public String transform( String text );
+    public String transform(String text) {
+        return text;
+    }
+
 }
