@@ -2,11 +2,11 @@ package pl.io.texttransformer.logic.transformations;
 
 import pl.io.texttransformer.logic.Transformation;
 
-public class UpperCase extends Transformation {
+public class Inverse extends Transformation {
 
     private Transformation transformation;
 
-    public UpperCase(Transformation transformation) {
+    public Inverse(Transformation transformation) {
         this.transformation = transformation;
     }
 

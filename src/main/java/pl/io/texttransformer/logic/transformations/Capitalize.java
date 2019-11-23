@@ -13,6 +13,11 @@ public class Capitalize extends Transformation {
 
     @Override
     public String transform(String text) {
-        return StringUtils.capitalize(transformation.transform(text));
+        String[] textsplit = text.split(" ");
+        for(int i=0; i<textsplit.length; i++){
+            textsplit[i]=StringUtils.capitalize(textsplit[i]);
+        }
+
+        return String.join(" ", textsplit);
     }
 }
