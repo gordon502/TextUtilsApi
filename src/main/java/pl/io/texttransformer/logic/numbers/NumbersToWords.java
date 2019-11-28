@@ -2,6 +2,7 @@ package pl.io.texttransformer.logic.numbers;
 
 import pl.io.texttransformer.logic.Transformation;
 
+
 public class NumbersToWords extends Transformation {
 
     private Transformation transformation;
@@ -18,12 +19,13 @@ public class NumbersToWords extends Transformation {
             String pom = "";
             String processedText = splittedText[i];
             if(processedText.length() > 0){
-                if(isLastCharacterPoint(splittedText[i])){
-                pom = splittedText[i].substring(splittedText[i].length() - 1);
-                processedText = splittedText[i].substring(0, splittedText[i].length() - 1);
+                while(isLastCharacterNonAlphaNumeric(processedText)){
+                    pom = processedText.substring(processedText.length() - 1) + pom;
+                    processedText = processedText.substring(0, processedText.length() - 1);
                 }
             }
-            if(isInteger(processedText)){
+            processedText = processedText.replace(",", ".");
+            if(isNumber(processedText)){
                 splittedText[i] = singleNumberTransform(processedText) + pom;
             }
         }
@@ -33,7 +35,13 @@ public class NumbersToWords extends Transformation {
     }
 
     private String singleNumberTransform(String text){
-        int number = Integer.valueOf(text);
+
+        double number = Double.valueOf(text);
+        int intNumber = (int) number;
+        double copynumber = number * 100;
+        int fractional = (int) copynumber;
+        fractional = fractional % 100;
+
         String[] onesArray = { "", "jeden ", "dwa ", "trzy ", "cztery ",
                 "piec ", "szesc ", "siedem ", "osiem ", "dziewiec ", };
 
@@ -59,80 +67,103 @@ public class NumbersToWords extends Transformation {
                 { "trylion ", "tryliony ", "trylionów " }, };
 
 
+
         long ones = 0/* jednosci */, tens = 0/* nastki */, fulltens = 0/* dziesiątki */, hundreds = 0/* setki */, groups = 0/* grupy */, ends = 0/* końcówwki */;
-        String result = "";
+        String intResult = "";
         String sign = "";
+        String fractResult = "";
 
 
-        if (number < 0) {
+
+        if (intNumber < 0) {
             sign = "minus ";
-            number = -number;
+            intNumber = -intNumber;
         }
-        if (number == 0) {
+        if (intNumber == 0) {
             sign = "zero";
         }
 
-        while (number != 0) {
-            hundreds = number % 1000 / 100;
-            fulltens = number % 100 / 10;
-            ones = number % 10;
+        while (intNumber != 0) {
+            hundreds = intNumber % 1000 / 100;
+            fulltens = intNumber % 100 / 10;
+            ones = intNumber % 10;
 
-            if (fulltens == 1 & ones > 0) // if zajmujący sie nastkami
-            {
+            if (fulltens == 1 & ones > 0){
                 tens = ones;
                 fulltens = 0;
                 ones = 0;
-            } else {
+            }
+            else {
                 tens = 0;
             }
 
 
             if (ones == 1 & hundreds + fulltens + tens == 0) {
                 ends = 0;
-
-                if (hundreds + fulltens == 0 && groups > 0)
-                {
+                if (hundreds + fulltens == 0 && groups > 0) {
                     ones = 0;
-                    result = groupsArray[(int) groups][(int) ends] + result;
+                    intResult = groupsArray[(int) groups][(int) ends] + intResult;
                 }
-            } else if (ones == 2) {
-                ends = 1;
-            } else if (ones == 3) {
-                ends = 1;
-            } else if (ones == 4) {
-                ends = 1;
-            } else {
-                ends = 2;
             }
+            else if (ones == 2) { ends = 1; }
+            else if (ones == 3) { ends = 1; }
+            else if (ones == 4) { ends = 1; }
+            else { ends = 2; }
 
 
             if (hundreds+fulltens+tens+ones > 0) {
-                result = hundredsArray[(int) hundreds] + fulltensArray[(int) fulltens] + tensArray[(int) tens]
-                        + onesArray[(int) ones] + groupsArray[(int) groups][(int) ends] + result;
+                intResult = hundredsArray[(int) hundreds] + fulltensArray[(int) fulltens] + tensArray[(int) tens]
+                        + onesArray[(int) ones] + groupsArray[(int) groups][(int) ends] + intResult;
             }
 
-            number = number / 1000;
+            intNumber = intNumber / 1000;
             groups = groups + 1;
         }
 
-        result = sign + result;
+        if(fractional != 0) {
+            fractResult = "i ";
+
+            int pom = fractional;
+            if (pom > 10 && pom < 19) {
+                fractResult = fractResult + tensArray[pom % 10] + "setnych";
+            }
+            else if (pom % 10 == 0){
+                if (pom / 10 == 1){ fractResult = fractResult + "jedna dziesiata"; }
+                else if(pom / 10 == 2) {fractResult = fractResult + "dwie dziesiate"; }
+                else if(pom / 10 > 4){ fractResult = fractResult + onesArray[pom/10] + "dziesiatych"; }
+                else{ fractResult = fractResult + onesArray[pom/10] + "dziesiate"; }
+            }
+            else if (pom / 10 == 0){
+                if(pom % 10 == 1) { fractResult = fractResult + "jedna setna"; }
+                else if (pom % 10 == 2) { fractResult = fractResult + "dwie setne"; }
+                else if (pom % 10 > 4) { fractResult = fractResult + onesArray[pom % 10] + "setnych"; }
+                else { fractResult = fractResult + onesArray[pom % 10] + "setne"; }
+            }
+            else{
+                fractResult = fractResult + fulltensArray[pom / 10];
+                fractResult = fractResult + onesArray[pom % 10];
+                fractResult = fractResult + "setnych";
+            }
+        }
+        String result = sign + intResult;
+        result = result + fractResult;
         result = result.trim();
         return result;
     }
 
 
-    private boolean isLastCharacterPoint(String text){
-        String str = text.substring(text.length() - 1);
-        if(str.equals(".") || str.equals(","))
+    private boolean isLastCharacterNonAlphaNumeric(String text){
+        char c = text.charAt(text.length()-1);
+        if (!Character.isDigit(c) && !Character.isLetter(c))
             return true;
         else
             return false;
     }
 
-    private boolean isInteger(String text){
+    private boolean isNumber(String text){
         boolean numeric = true;
         try {
-            Integer num = Integer.parseInt(text);
+            Double num = Double.parseDouble(text);
         } catch (NumberFormatException e) {
             numeric = false;
         }
