@@ -50,25 +50,25 @@ public class NumbersToWords extends Transformation {
                 "osiemnascie ", "dziewietnascie ", };
 
         String[] fulltensArray = { "", "dziesiec ", "dwadziescia ",
-                "trzydziesci ", "czterdziesci ", "piecdziesiąt ",
-                "szescdziesiąt ", "siedemdziesiąt ", "osiemdziesiąt ",
-                "dziewiecdziesiąt ", };
+                "trzydziesci ", "czterdziesci ", "piecdziesiat ",
+                "szescdziesiat ", "siedemdziesiat ", "osiemdziesiat ",
+                "dziewiecdziesiat ", };
 
         String[] hundredsArray = { "", "sto ", "dwiescie ", "trzysta ", "czterysta ",
                 "piecset ", "szescset ", "siedemset ", "osiemset ",
                 "dziewiecset ", };
 
         String[][] groupsArray = { { "", "", "" },
-                { "tysiąc ", "tysiące ", "tysiecy " },
-                { "milion ", "miliony ", "milionów " },
-                { "miliard ", "miliardy ", "miliardów " },
-                { "bilion ", "biliony ", "bilionów " },
-                { "biliard ", "biliardy ", "biliardów " },
-                { "trylion ", "tryliony ", "trylionów " }, };
+                { "tysiac ", "tysiace ", "tysiecy " },
+                { "milion ", "miliony ", "milionow " },
+                { "miliard ", "miliardy ", "miliardow " },
+                { "bilion ", "biliony ", "bilionow " },
+                { "biliard ", "biliardy ", "biliardow " },
+                { "trylion ", "tryliony ", "trylionow " }, };
 
 
 
-        long ones = 0/* jednosci */, tens = 0/* nastki */, fulltens = 0/* dziesiątki */, hundreds = 0/* setki */, groups = 0/* grupy */, ends = 0/* końcówwki */;
+        long ones = 0/* jednosci */, tens = 0/* nastki */, fulltens = 0/* dziesiatki */, hundreds = 0/* setki */, groups = 0/* grupy */, ends = 0/* końcowwki */;
         String intResult = "";
         String sign = "";
         String fractResult = "";
