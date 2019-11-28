@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.io.texttransformer.app.Response;
 import pl.io.texttransformer.exceptions.UnknownTransformException;
 import pl.io.texttransformer.logic.Transformation;
+import pl.io.texttransformer.logic.conversions.LatexToText;
 import pl.io.texttransformer.logic.numbers.NumbersToWords;
 import pl.io.texttransformer.logic.transformations.Capitalize;
 import pl.io.texttransformer.logic.transformations.Inverse;
@@ -60,7 +61,8 @@ public class TextTransformController {
                 "lowercase", LowerCase.class.getName(),
                 "capitalize", Capitalize.class.getName(),
                 "inverse", Inverse.class.getName(),
-                "numberstowords", NumbersToWords.class.getName()
+                "numberstowords", NumbersToWords.class.getName(),
+                "latextotext", LatexToText.class.getName()
         );
     }
 
