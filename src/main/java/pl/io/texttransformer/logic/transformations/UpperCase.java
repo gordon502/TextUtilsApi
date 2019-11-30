@@ -12,6 +12,6 @@ public class UpperCase extends Transformation {
 
     @Override
     public String transform(String text) {
-        return transformation.transform(text).toUpperCase();
+        return transformation.transform(text.toUpperCase());
     }
 }
