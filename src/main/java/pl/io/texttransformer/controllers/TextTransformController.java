@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.io.texttransformer.app.Response;
 import pl.io.texttransformer.exceptions.UnknownTransformException;
 import pl.io.texttransformer.logic.Transformation;
+import pl.io.texttransformer.logic.corrections.CleanDuplicates;
+import pl.io.texttransformer.logic.shortcodes.ExpandText;
+import pl.io.texttransformer.logic.shortcodes.ShortenText;
 import pl.io.texttransformer.logic.transformations.Capitalize;
 import pl.io.texttransformer.logic.transformations.Inverse;
 import pl.io.texttransformer.logic.transformations.LowerCase;
@@ -58,7 +61,10 @@ public class TextTransformController {
                 "uppercase", UpperCase.class.getName(),
                 "lowercase", LowerCase.class.getName(),
                 "capitalize", Capitalize.class.getName(),
-                "inverse", Inverse.class.getName()
+                "inverse", Inverse.class.getName(),
+                "cleanDuplicates", CleanDuplicates.class.getName(),
+                "shortenText", ShortenText.class.getName(),
+                "expandText", ExpandText.class.getName()
         );
     }
 
