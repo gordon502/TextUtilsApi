@@ -12,6 +12,9 @@ import pl.io.texttransformer.logic.Transformation;
 import pl.io.texttransformer.logic.conversions.LatexToText;
 import pl.io.texttransformer.logic.conversions.TextToLatex;
 import pl.io.texttransformer.logic.numbers.NumbersToWords;
+import pl.io.texttransformer.logic.corrections.CleanDuplicates;
+import pl.io.texttransformer.logic.shortcodes.ExpandText;
+import pl.io.texttransformer.logic.shortcodes.ShortenText;
 import pl.io.texttransformer.logic.transformations.Capitalize;
 import pl.io.texttransformer.logic.transformations.Inverse;
 import pl.io.texttransformer.logic.transformations.LowerCase;
@@ -61,10 +64,7 @@ public class TextTransformController {
                 "uppercase", UpperCase.class.getName(),
                 "lowercase", LowerCase.class.getName(),
                 "capitalize", Capitalize.class.getName(),
-                "inverse", Inverse.class.getName(),
-                "numberstowords", NumbersToWords.class.getName(),
-                "latextotext", LatexToText.class.getName(),
-                "texttolatex", TextToLatex.class.getName()
+                "inverse", Inverse.class.getName()
         );
     }
 
