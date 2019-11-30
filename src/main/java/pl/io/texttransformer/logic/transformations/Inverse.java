@@ -17,6 +17,6 @@ public class Inverse extends Transformation {
 
         for (int i = 0; i<strAsByteArray.length; i++)
             result[i] = strAsByteArray[strAsByteArray.length-i-1];
-        return new String(result);
+        return transformation.transform(new String(result));
     }
 }

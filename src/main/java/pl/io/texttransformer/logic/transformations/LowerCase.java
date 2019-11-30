@@ -12,6 +12,6 @@ public class LowerCase extends Transformation {
 
     @Override
     public String transform(String text) {
-        return transformation.transform(text).toLowerCase();
+        return transformation.transform(text.toLowerCase());
     }
 }

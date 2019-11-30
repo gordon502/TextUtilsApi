@@ -18,6 +18,6 @@ public class Capitalize extends Transformation {
             textsplit[i]=StringUtils.capitalize(textsplit[i]);
         }
 
-        return String.join(" ", textsplit);
+        return transformation.transform(String.join(" ", textsplit));
     }
 }
