@@ -13,6 +13,6 @@ public class LatexToTextTest {
 
         assertEquals(t.transform("Witam \\$pana"), "Witam $pana");
         assertEquals(t.transform(""), "");
-        assertEquals(t.transform("test \\& 1 \\$"), "test & 1");
+        assertEquals(t.transform("test \\& 1 \\$"), "test & 1 $");
     }
 }

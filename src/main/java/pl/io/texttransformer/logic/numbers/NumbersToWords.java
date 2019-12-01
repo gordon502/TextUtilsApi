@@ -2,6 +2,8 @@ package pl.io.texttransformer.logic.numbers;
 
 import pl.io.texttransformer.logic.Transformation;
 
+import static pl.io.texttransformer.logic.numbers.WordsArrays.*;
+
 
 public class NumbersToWords extends Transformation {
 
@@ -41,31 +43,6 @@ public class NumbersToWords extends Transformation {
         double copynumber = number * 100;
         int fractional = (int) copynumber;
         fractional = fractional % 100;
-
-        String[] onesArray = { "", "jeden ", "dwa ", "trzy ", "cztery ",
-                "piec ", "szesc ", "siedem ", "osiem ", "dziewiec ", };
-
-        String[] tensArray = { "", "jedenascie ", "dwanascie ", "trzynascie ",
-                "czternascie ", "pietnascie ", "szesnascie ", "siedemnascie ",
-                "osiemnascie ", "dziewietnascie ", };
-
-        String[] fulltensArray = { "", "dziesiec ", "dwadziescia ",
-                "trzydziesci ", "czterdziesci ", "piecdziesiat ",
-                "szescdziesiat ", "siedemdziesiat ", "osiemdziesiat ",
-                "dziewiecdziesiat ", };
-
-        String[] hundredsArray = { "", "sto ", "dwiescie ", "trzysta ", "czterysta ",
-                "piecset ", "szescset ", "siedemset ", "osiemset ",
-                "dziewiecset ", };
-
-        String[][] groupsArray = { { "", "", "" },
-                { "tysiac ", "tysiace ", "tysiecy " },
-                { "milion ", "miliony ", "milionow " },
-                { "miliard ", "miliardy ", "miliardow " },
-                { "bilion ", "biliony ", "bilionow " },
-                { "biliard ", "biliardy ", "biliardow " },
-                { "trylion ", "tryliony ", "trylionow " }, };
-
 
 
         long ones = 0/* jednosci */, tens = 0/* nastki */, fulltens = 0/* dziesiatki */, hundreds = 0/* setki */, groups = 0/* grupy */, ends = 0/* końcowwki */;
