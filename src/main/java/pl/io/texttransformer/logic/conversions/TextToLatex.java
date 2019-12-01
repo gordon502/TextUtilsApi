@@ -12,8 +12,8 @@ public class TextToLatex extends Transformation{
     public String transform(String text){
 
         String word = text;
-        word.replace("$", "\\$");
-        word.replace("&", "\\&");
+        word = word.replace("$", "\\$");
+        word = word.replace("&", "\\&");
 
         return transformation.transform(word);
     }
