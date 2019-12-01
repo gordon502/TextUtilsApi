@@ -64,7 +64,10 @@ public class TextTransformController {
                 "uppercase", UpperCase.class.getName(),
                 "lowercase", LowerCase.class.getName(),
                 "capitalize", Capitalize.class.getName(),
-                "inverse", Inverse.class.getName()
+                "inverse", Inverse.class.getName(),
+                "texttolatex", TextToLatex.class.getName(),
+                "latextotext", LatexToText.class.getName(),
+                "NumbersToWords", NumbersToWords.class.getName()
         );
     }
 
