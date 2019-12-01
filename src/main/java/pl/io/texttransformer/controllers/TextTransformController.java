@@ -71,7 +71,7 @@ public class TextTransformController {
                 "numberstowords", NumbersToWords.class.getName(),
                 "wordstonumbers", WordsToNumbers.class.getName(),
                 "shortentext", ShortenText.class.getName(),
-                "expandtext", ExpandText.class.getName(),
+                "expandtext", ExpandText.class.getName()
         );
         transformations.put("cleanduplicates", CleanDuplicates.class.getName());
     }
