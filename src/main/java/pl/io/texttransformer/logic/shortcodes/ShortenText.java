@@ -4,6 +4,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Shorten phrases to appropriate shortcuts.
+ * Extending AbbrOperate which bring list of known shortcuts and corresponding statements.
+ */
 public class ShortenText extends AbbrOperate{
     private Transformation transformation;
 
@@ -13,6 +17,7 @@ public class ShortenText extends AbbrOperate{
 
     @Override
     public String transform(String text) {
+        //if it's first call of any AbbrTransformations read all shortcuts from file.
         if(Abbrs == null){
             try {
                 Abbrs = readAbbrs("skroty.csv");
@@ -44,6 +49,6 @@ public class ShortenText extends AbbrOperate{
                 }
             }
         }
-        return String.join(" ", words);
+        return transformation.transform(String.join(" ", words));
     }
 }

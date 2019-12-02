@@ -1,10 +1,14 @@
 package pl.io.texttransformer.logic.corrections;
-
 import pl.io.texttransformer.logic.Transformation;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ * Reduces series of the same word to only one word.
+ * It's independent to characters case.
+ * If words has different characters case result is in form of the first word.
+ */
 public class CleanDuplicates extends Transformation {
     private Transformation transformation;
 
@@ -22,6 +26,6 @@ public class CleanDuplicates extends Transformation {
             }
         }
 
-        return String.join(" ", words);
+        return transformation.transform(String.join(" ", words));
     }
 }
