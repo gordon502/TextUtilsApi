@@ -4,15 +4,28 @@ import pl.io.texttransformer.logic.Transformation;
 
 import static pl.io.texttransformer.logic.numbers.WordsArrays.*;
 
-
+/**
+ * Replace numbers in given sentence to word numbers in polish language.
+ * Class supports conversion to two decimal places for float numbers.
+ */
 public class NumbersToWords extends Transformation {
 
     private Transformation transformation;
 
+    /**
+     * Class constructor.
+     * @param transformation
+     */
     public NumbersToWords(Transformation transformation) {
         this.transformation = transformation;
     }
 
+
+    /**
+     * Main method providing conversion.
+     * @param text to convert
+     * @return converted text with replaced numbers to word numbers
+     */
     @Override
     public String transform(String text){
         String[] splittedText = text.split(" ");
@@ -36,6 +49,11 @@ public class NumbersToWords extends Transformation {
         return transformation.transform(joined);
     }
 
+    /**
+     * Converts single number.
+     * @param text - single number in String type without any non numeric characters
+     * @return converted single number to word number
+     */
     private String singleNumberTransform(String text){
 
         double number = Double.valueOf(text);
@@ -129,6 +147,11 @@ public class NumbersToWords extends Transformation {
     }
 
 
+    /**
+     * Check if last character in given word is special sign.
+     * @param text
+     * @return true or false
+     */
     private boolean isLastCharacterNonAlphaNumeric(String text){
         char c = text.charAt(text.length()-1);
         if (!Character.isDigit(c) && !Character.isLetter(c))
@@ -137,6 +160,11 @@ public class NumbersToWords extends Transformation {
             return false;
     }
 
+    /**
+     * Check if is given string a number.
+     * @param text
+     * @return true or false
+     */
     private boolean isNumber(String text){
         boolean numeric = true;
         try {
