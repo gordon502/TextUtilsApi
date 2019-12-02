@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="981.4247541407867" y="216.0">pl.io.texttransformer.logic.conversions.TextToLatex</node>
+    <node x="655.0" y="203.5">pl.io.texttransformer.logic.shortcodes.AbbrOperate</node>
+    <node x="164.67475414078672" y="166.0">pl.io.texttransformer.logic.numbers.WordsArrays</node>
+    <node x="1357.25" y="512.0">pl.io.texttransformer.controllers.TextTransformController</node>
+    <node x="2097.4247541407867" y="369.0">pl.io.texttransformer.app.Response</node>
+    <node x="1257.4247541407867" y="216.0">pl.io.texttransformer.logic.corrections.CleanDuplicates</node>
+    <node x="1533.4247541407867" y="216.0">pl.io.texttransformer.logic.conversions.LatexToText</node>
+    <node x="793.0" y="369.0">pl.io.texttransformer.logic.shortcodes.ExpandText</node>
+    <node x="517.0" y="369.0">pl.io.texttransformer.logic.shortcodes.ShortenText</node>
+    <node x="1123.357142857143" y="0.0">pl.io.texttransformer.logic.Transformation</node>
+    <node x="0.0" y="382.5">pl.io.texttransformer.exceptions.UnknownTransformException</node>
+    <node x="241.0" y="369.0">pl.io.texttransformer.logic.numbers.NumbersToWords</node>
+    <node x="1809.4247541407867" y="216.0">pl.io.texttransformer.logic.numbers.WordsToNumbers</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.shortcodes.ExpandText">
+      <point x="-61.875" y="-39.0" />
+      <point x="1443.875" y="462.0" />
+      <point x="921.0" y="462.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.shortcodes.ShortenText">
+      <point x="-86.625" y="-39.0" />
+      <point x="1419.125" y="472.0" />
+      <point x="645.0" y="472.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.numbers.WordsToNumbers" target="pl.io.texttransformer.logic.Transformation">
+      <point x="-85.33333333333331" y="-26.5" />
+      <point x="1852.0914208074535" y="86.0" />
+      <point x="1239.1832298136646" y="86.0" />
+      <point x="43.82608695652175" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.corrections.CleanDuplicates" target="pl.io.texttransformer.logic.Transformation">
+      <point x="-85.33333333333326" y="-26.5" />
+      <point x="1300.0914208074535" y="146.0" />
+      <point x="1201.6180124223602" y="146.0" />
+      <point x="6.2608695652173765" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.Transformation">
+      <point x="86.625" y="-39.0" />
+      <point x="1592.375" y="472.0" />
+      <point x="2086.9247541407867" y="472.0" />
+      <point x="2086.9247541407867" y="46.0" />
+      <point x="1264.2267080745341" y="46.0" />
+      <point x="68.86956521739125" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.shortcodes.ShortenText" target="pl.io.texttransformer.logic.shortcodes.AbbrOperate">
+      <point x="32.0" y="-26.5" />
+      <point x="677.0" y="344.0" />
+      <point x="687.0" y="344.0" />
+      <point x="-96.0" y="39.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.conversions.TextToLatex" target="pl.io.texttransformer.logic.Transformation">
+      <point x="0.0" y="-26.5" />
+      <point x="1109.4247541407867" y="146.0" />
+      <point x="1189.0962732919254" y="146.0" />
+      <point x="-6.2608695652173765" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.numbers.NumbersToWords" target="pl.io.texttransformer.logic.Transformation">
+      <point x="-32.0" y="-26.5" />
+      <point x="337.0" y="344.0" />
+      <point x="381.1747541407867" y="344.0" />
+      <point x="381.1747541407867" y="46.0" />
+      <point x="1126.4875776397516" y="46.0" />
+      <point x="-68.86956521739125" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.app.Response">
+      <point x="136.125" y="-39.0" />
+      <point x="1641.875" y="492.0" />
+      <point x="2194.9247541407867" y="492.0" />
+      <point x="32.5" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.conversions.LatexToText">
+      <point x="12.375" y="-39.0" />
+      <point x="1518.125" y="442.0" />
+      <point x="1661.4247541407867" y="442.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.conversions.TextToLatex">
+      <point x="-37.125" y="-39.0" />
+      <point x="1468.625" y="452.0" />
+      <point x="1109.4247541407867" y="452.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.conversions.LatexToText" target="pl.io.texttransformer.logic.Transformation">
+      <point x="0.0" y="-26.5" />
+      <point x="1661.4247541407867" y="106.0" />
+      <point x="1226.6614906832299" y="106.0" />
+      <point x="31.304347826086996" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.exceptions.UnknownTransformException">
+      <point x="-136.125" y="-39.0" />
+      <point x="1369.625" y="492.0" />
+      <point x="110.5" y="492.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.shortcodes.ShortenText" target="pl.io.texttransformer.logic.Transformation">
+      <point x="-32.0" y="-26.5" />
+      <point x="613.0" y="344.0" />
+      <point x="597.8490553830228" y="344.0" />
+      <point x="597.8490553830228" y="86.0" />
+      <point x="1151.5310559006211" y="86.0" />
+      <point x="-43.82608695652175" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.numbers.NumbersToWords">
+      <point x="-111.375" y="-39.0" />
+      <point x="1394.375" y="482.0" />
+      <point x="369.0" y="482.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.numbers.WordsToNumbers">
+      <point x="37.125" y="-39.0" />
+      <point x="1542.875" y="452.0" />
+      <point x="1937.4247541407867" y="452.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.shortcodes.ExpandText" target="pl.io.texttransformer.logic.Transformation">
+      <point x="96.0" y="-26.5" />
+      <point x="1017.0" y="344.0" />
+      <point x="970.9247541407867" y="344.0" />
+      <point x="970.9247541407867" y="126.0" />
+      <point x="1176.5745341614906" y="126.0" />
+      <point x="-18.782608695652243" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.controllers.TextTransformController" target="pl.io.texttransformer.logic.corrections.CleanDuplicates">
+      <point x="-12.375" y="-39.0" />
+      <point x="1493.375" y="442.0" />
+      <point x="1385.4247541407867" y="442.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.numbers.NumbersToWords" target="pl.io.texttransformer.logic.numbers.WordsArrays">
+      <point x="-96.0" y="-26.5" />
+      <point x="273.0" y="344.0" />
+      <point x="267.6747541407867" y="344.0" />
+      <point x="0.0" y="76.5" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.shortcodes.AbbrOperate" target="pl.io.texttransformer.logic.Transformation">
+      <point x="64.0" y="-39.0" />
+      <point x="847.0" y="106.0" />
+      <point x="1164.052795031056" y="106.0" />
+      <point x="-31.304347826086996" y="13.0" />
+    </edge>
+    <edge source="pl.io.texttransformer.logic.shortcodes.ExpandText" target="pl.io.texttransformer.logic.shortcodes.AbbrOperate">
+      <point x="-32.0" y="-26.5" />
+      <point x="889.0" y="344.0" />
+      <point x="879.0" y="344.0" />
+      <point x="96.0" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6675266903914591" x="1580.2344395575103" y="211.85285885645743" />
+  <SelectedNodes>
+    <node>pl.io.texttransformer.logic.Transformation</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
