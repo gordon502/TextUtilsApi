@@ -25,6 +25,8 @@ import java.lang.reflect.Constructor;
 import java.util.Map;
 import java.util.Set;
 
+import static java.util.Map.entry;
+
 @RestController
 public class TextTransformController {
 
@@ -61,19 +63,19 @@ public class TextTransformController {
     private void RegisterTransforms() {
         logger.info("Registering text transformations");
 
-        transformations = Map.of(
-                "uppercase", UpperCase.class.getName(),
-                "lowercase", LowerCase.class.getName(),
-                "capitalize", Capitalize.class.getName(),
-                "inverse", Inverse.class.getName(),
-                "texttolatex", TextToLatex.class.getName(),
-                "latextotext", LatexToText.class.getName(),
-                "numberstowords", NumbersToWords.class.getName(),
-                "wordstonumbers", WordsToNumbers.class.getName(),
-                "shortentext", ShortenText.class.getName(),
-                "expandtext", ExpandText.class.getName()
+        transformations = Map.ofEntries(
+                entry("uppercase", UpperCase.class.getName()),
+                entry("lowercase", LowerCase.class.getName()),
+                entry("capitalize", Capitalize.class.getName()),
+                entry("inverse", Inverse.class.getName()),
+                entry("texttolatex", TextToLatex.class.getName()),
+                entry("latextotext", LatexToText.class.getName()),
+                entry("numberstowords", NumbersToWords.class.getName()),
+                entry("wordstonumbers", WordsToNumbers.class.getName()),
+                entry("shortentext", ShortenText.class.getName()),
+                entry("expandtext", ExpandText.class.getName()),
+                entry("cleanduplicates", CleanDuplicates.class.getName())
         );
-        transformations.put("cleanduplicates", CleanDuplicates.class.getName());
     }
 
     private boolean checkTransformations(String[] transformations) {
