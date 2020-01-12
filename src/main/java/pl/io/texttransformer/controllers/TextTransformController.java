@@ -11,9 +11,12 @@ import pl.io.texttransformer.exceptions.UnknownTransformException;
 import pl.io.texttransformer.logic.Transformation;
 import pl.io.texttransformer.logic.conversions.LatexToText;
 import pl.io.texttransformer.logic.conversions.TextToLatex;
+import pl.io.texttransformer.logic.corrections.CleanDuplicates;
+import pl.io.texttransformer.logic.hash.hashMD5;
+import pl.io.texttransformer.logic.hash.hashSHA1;
+import pl.io.texttransformer.logic.hash.hashSHA256;
 import pl.io.texttransformer.logic.numbers.NumbersToWords;
 import pl.io.texttransformer.logic.numbers.WordsToNumbers;
-import pl.io.texttransformer.logic.corrections.CleanDuplicates;
 import pl.io.texttransformer.logic.shortcodes.ExpandText;
 import pl.io.texttransformer.logic.shortcodes.ShortenText;
 import pl.io.texttransformer.logic.transformations.Capitalize;
@@ -74,8 +77,10 @@ public class TextTransformController {
                 entry("wordstonumbers", WordsToNumbers.class.getName()),
                 entry("shortentext", ShortenText.class.getName()),
                 entry("expandtext", ExpandText.class.getName()),
-                entry("cleanduplicates", CleanDuplicates.class.getName())
-        );
+                entry("cleanduplicates", CleanDuplicates.class.getName()),
+                entry("md5", hashMD5.class.getName()),
+                entry("sha256", hashSHA256.class.getName()),
+                entry("sha1", hashSHA1.class.getName()));
     }
 
     private boolean checkTransformations(String[] transformations) {
