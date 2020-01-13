@@ -10,8 +10,9 @@ public class VigenereTest {
     public void transform() {
         Vigenere t = new Vigenere(new Transformation());
 
-        assertEquals(t.transform("testing"), "omyxvrx");
-        assertEquals(t.transform("TESTING"), "OMYXVRX");
-        assertEquals(t.transform("testinG Testing tESting"), "omyxvrX Xzazmak kINbort");
+        assertEquals(t.transform("testing", "VIGENERE", "cipher"), "omyxvrx");
+        assertEquals(t.transform("TESTING", "VIGENERE", "cipher"), "OMYXVRX");
+        assertEquals(t.transform("testinG Testing tESting", "VIGENERE", "cipher"), "omyxvrX Xzazmak kINbort");
+        assertEquals(t.transform("cchiex rxvsan b wnmxqk", "VIGENERE", "decipher"), "hubert atakuj o swicie");
     }
 }
