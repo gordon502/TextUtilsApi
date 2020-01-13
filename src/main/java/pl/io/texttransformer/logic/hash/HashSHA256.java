@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Creates SHA-256 hash for input text.
  */
-public class hashSHA256 extends Transformation {
+public class HashSHA256 extends Transformation {
 
     private Transformation transformation;
 
@@ -18,7 +18,7 @@ public class hashSHA256 extends Transformation {
      *
      * @param transformation Previous transformation.
      */
-    public hashSHA256(Transformation transformation) {
+    public HashSHA256(Transformation transformation) {
         this.transformation = transformation;
     }
 
@@ -38,7 +38,7 @@ public class hashSHA256 extends Transformation {
         }
         md.update(text.getBytes());
         byte[] digest = md.digest();
-        String output = String.format("%032X", new BigInteger(1, digest));
+        String output = String.format("%032X", new BigInteger(1, digest)).toLowerCase();
 
         return transformation.transform(output);
     }

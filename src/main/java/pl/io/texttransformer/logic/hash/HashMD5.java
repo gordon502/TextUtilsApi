@@ -7,9 +7,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Creates SHA-1 hash for input text.
+ * Creates MD5 hash for input text.
  */
-public class hashSHA1 extends Transformation {
+public class HashMD5 extends Transformation {
 
     private Transformation transformation;
 
@@ -18,27 +18,27 @@ public class hashSHA1 extends Transformation {
      *
      * @param transformation Previous transformation.
      */
-    public hashSHA1(Transformation transformation) {
+    public HashMD5(Transformation transformation) {
         this.transformation = transformation;
     }
 
     /**
-     * Creates SHA-1 hash by using standard Java classes and methods.
+     * Creates MD5 hash by using standard Java classes and methods.
      *
      * @param text Input text modified by previous transformations.
-     * @return String SHA-1 hash of text.
+     * @return String MD5 hash of text.
      */
     @Override
     public String transform(String text) {
         MessageDigest md = null;
         try {
-            md = MessageDigest.getInstance("SHA-1");
+            md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         md.update(text.getBytes());
         byte[] digest = md.digest();
-        String output = String.format("%032X", new BigInteger(1, digest));
+        String output = String.format("%032X", new BigInteger(1, digest)).toLowerCase();
 
         return transformation.transform(output);
     }
