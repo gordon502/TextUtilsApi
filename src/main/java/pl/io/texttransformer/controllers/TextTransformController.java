@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.io.texttransformer.app.Response;
 import pl.io.texttransformer.exceptions.UnknownTransformException;
+import pl.io.texttransformer.exceptions.WrongKeyException;
+import pl.io.texttransformer.exceptions.WrongOptionException;
 import pl.io.texttransformer.logic.Transformation;
-import pl.io.texttransformer.logic.ciphers.DeVigenere;
 import pl.io.texttransformer.logic.ciphers.ROT13;
 import pl.io.texttransformer.logic.ciphers.Vigenere;
 import pl.io.texttransformer.logic.conversions.LatexToText;
@@ -66,6 +67,21 @@ public class TextTransformController {
         return transformations.keySet();
     }
 
+    @RequestMapping("/cipher")
+    public Response transform(@RequestParam("text") String text, @RequestParam("key") String key, @RequestParam("option") String option) throws Exception {
+        if (!option.equals("decipher") && !option.equals("cipher")){
+            throw new WrongOptionException();
+        }
+
+        if(!key.matches("[a-zA-Z]+")){
+            throw new WrongKeyException();
+        }
+
+        Transformation transformation = new Transformation();
+        Vigenere vigenere = new Vigenere(transformation);
+        return new Response(vigenere.transform(text, key, option));
+    }
+
     private void RegisterTransforms() {
         logger.info("Registering text transformations");
 
@@ -84,9 +100,7 @@ public class TextTransformController {
                 entry("md5", HashMD5.class.getName()),
                 entry("sha256", HashSHA256.class.getName()),
                 entry("sha1", HashSHA1.class.getName()),
-                entry("rot13", ROT13.class.getName()),
-                entry("vigenere", Vigenere.class.getName()),
-                entry("devigenere", DeVigenere.class.getName())
+                entry("rot13", ROT13.class.getName())
         );
     }
 
