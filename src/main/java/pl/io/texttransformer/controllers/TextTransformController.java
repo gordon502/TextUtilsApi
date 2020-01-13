@@ -68,7 +68,7 @@ public class TextTransformController {
     }
 
     @RequestMapping("/cipher")
-    public Response transform(@RequestParam("text") String text, @RequestParam("key") String key, @RequestParam("option") String option) throws Exception {
+    public Response cipher(@RequestParam("text") String text, @RequestParam("key") String key, @RequestParam("option") String option) throws Exception {
         if (!option.equals("decipher") && !option.equals("cipher")){
             throw new WrongOptionException();
         }
