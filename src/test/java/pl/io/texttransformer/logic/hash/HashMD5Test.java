@@ -2,11 +2,10 @@ package pl.io.texttransformer.logic.hash;
 
 import org.junit.Test;
 import pl.io.texttransformer.logic.Transformation;
-import pl.io.texttransformer.logic.ciphers.Vigenere;
 
 import static org.junit.Assert.assertEquals;
 
-class HashMD5Test {
+public class HashMD5Test {
     @Test
     public void transform() {
         HashMD5 t = new HashMD5(new Transformation());
