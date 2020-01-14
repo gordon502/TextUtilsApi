@@ -1,6 +1,7 @@
 package pl.io.texttransformer.logic.shortcodes;
+import pl.io.texttransformer.controllers.TextTransformController;
 import pl.io.texttransformer.logic.Transformation;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,29 +9,27 @@ import java.util.Arrays;
  * Shorten phrases to appropriate shortcuts.
  * Extending AbbrOperate which bring list of known shortcuts and corresponding statements.
  */
-public class ShortenText extends AbbrOperate{
+public class ShortenText extends Transformation{
     private Transformation transformation;
+    private Shortcodes shortcodes;
+
+    public ShortenText(Transformation transformation,Shortcodes shortcodes) {
+        this.transformation = transformation;
+        this.shortcodes = shortcodes;
+    }
 
     public ShortenText(Transformation transformation) {
         this.transformation = transformation;
+        this.shortcodes = TextTransformController.getShortcodes();
     }
 
     @Override
     public String transform(String text) {
-        //if it's first call of any AbbrTransformations read all shortcuts from file.
-        if(Abbrs == null){
-            try {
-                Abbrs = readAbbrs("skroty.csv");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
         ArrayList<String> words = new ArrayList<>(Arrays.asList( text.split(" ")));
         for (int i = 3; i>0; i--){
             for (int j = 0; j<=words.size()-i; j++){
                 boolean finded = false;
-                for (String[] k : Abbrs){
+                for (String[] k : shortcodes.getShortcodesList()){
                     if (Character.toUpperCase(k[0].charAt(0)) != Character.toUpperCase(words.get(j).charAt(0))){
                         continue;
                     }

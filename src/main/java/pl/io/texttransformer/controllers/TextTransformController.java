@@ -21,6 +21,7 @@ import pl.io.texttransformer.logic.hash.HashSHA1;
 import pl.io.texttransformer.logic.hash.HashSHA256;
 import pl.io.texttransformer.logic.numbers.NumbersToWords;
 import pl.io.texttransformer.logic.numbers.WordsToNumbers;
+import pl.io.texttransformer.logic.shortcodes.Shortcodes;
 import pl.io.texttransformer.logic.shortcodes.ExpandText;
 import pl.io.texttransformer.logic.shortcodes.ShortenText;
 import pl.io.texttransformer.logic.transformations.Capitalize;
@@ -39,9 +40,16 @@ public class TextTransformController {
 
     private Map<String, String> transformations;
     private Logger logger = LoggerFactory.getLogger(TextTransformController.class);
+    private static Shortcodes shortcodes;
+
+    public static Shortcodes getShortcodes() {
+        return shortcodes;
+    }
 
     public TextTransformController() {
         RegisterTransforms();
+        shortcodes = new Shortcodes();
+        shortcodes.readFile("skroty.csv");
     }
 
     @RequestMapping("/transform")
